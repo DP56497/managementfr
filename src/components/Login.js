@@ -18,7 +18,7 @@ const Login = () => {
   setError("");
 
   try {
-    const res = await axios.post("http://localhost:3050/api/login", formData);
+    const res = await axios.post("https://managementba-yq52.onrender.com/api/login", formData);
     console.log("Login response:", res.data);
 
     if (res.data.success) {
