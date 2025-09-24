@@ -24,7 +24,7 @@ function OwnerProfile() {
   useEffect(() => {
     const fetchAdminManagers = async () => {
       try {
-        const response = await fetch("http://localhost:3050/api/users");
+        const response = await fetch("https://managementba-yq52.onrender.com/api/users");
         const data = await response.json();
         const adminOnly = data.filter(user => user.category === "Admin manager");
         setAdminManagers(adminOnly);
@@ -56,7 +56,7 @@ function OwnerProfile() {
     formData.append("pdf", pdfFile);
 
     try {
-      const response = await fetch("http://localhost:3050/api/admin-assigned-work", {
+      const response = await fetch("https://managementba-yq52.onrender.com/api/admin-assigned-work", {
         method: "POST",
         body: formData,
       });
