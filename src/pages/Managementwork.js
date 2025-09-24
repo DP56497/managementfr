@@ -27,7 +27,7 @@ function Managementwork() {
   useEffect(() => {
     const fetchStaff = async () => {
       try {
-        const response = await fetch('http://localhost:3050/api/users');
+        const response = await fetch('https://managementba-yq52.onrender.com/api/users');
         const data = await response.json();
         const staffOnly = data.filter(user => user.category === 'staff');
         setStaffMembers(staffOnly);
@@ -62,7 +62,7 @@ function Managementwork() {
     formData.append("pdfFile", pdfFile);
 
     try {
-      const response = await fetch("http://localhost:3050/api/assign-work", {
+      const response = await fetch("https://managementba-yq52.onrender.com/api/assign-work", {
         method: "POST",
         body: formData,
       });
