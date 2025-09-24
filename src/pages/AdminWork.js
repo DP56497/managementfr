@@ -34,7 +34,7 @@ function AdminWork() {
         const name = localStorage.getItem("name");
 
         const res = await fetch(
-          "http://localhost:3050/api/admin-assigned-work/admin"
+          "https://managementba-yq52.onrender.com/api/admin-assigned-work/admin"
         );
         const data = await res.json();
 
@@ -78,7 +78,7 @@ const handleStatusChange = async (index, id, newStatus) => {
       return updated;
     });
 
-    const res = await fetch(`http://localhost:3050/api/adminwork/${id}`, {
+    const res = await fetch(`https://managementba-yq52.onrender.com/api/adminwork/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: newStatus }),
@@ -87,7 +87,7 @@ const handleStatusChange = async (index, id, newStatus) => {
     if (!res.ok) throw new Error("Failed to update status");
 
     // ✅ Only refresh stats once (not entire list again)
-    const statsRes = await fetch("http://localhost:3050/api/stats");
+    const statsRes = await fetch("https://managementba-yq52.onrender.com/api/stats");
     const statsData = await statsRes.json();
     localStorage.setItem("dashboardStats", JSON.stringify(statsData));
     window.dispatchEvent(new Event("statsUpdated"));
@@ -104,7 +104,7 @@ const handleFileUpload = async (id, file, index) => {
   formData.append("completedPdf", file);
 
   try {
-    const res = await fetch(`http://localhost:3050/api/reupload/${id}`, {
+    const res = await fetch(`https://managementba-yq52.onrender.com/api/reupload/${id}`, {
       method: "POST",
       body: formData,
     });
@@ -193,7 +193,7 @@ const handleFileUpload = async (id, file, index) => {
                     <td style={styles.td}>
                       {work.pdf ? (
                         <a
-                          href={`http://localhost:3050/admin-uploads/${work.pdf}`}
+                          href={`https://managementba-yq52.onrender.com/admin-uploads/${work.pdf}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           style={styles.link}
