@@ -55,7 +55,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch("http://localhost:3050/api/stats");
+        const res = await fetch("https://managementba-yq52.onrender.com/api/stats");
         const data = await res.json();
         setStats({
           totalStaff: data.totalStaff || 0,
@@ -77,12 +77,12 @@ function Dashboard() {
     const handleStatsUpdate = async () => {
       try {
         const res1 = await fetch(
-          "http://localhost:3050/api/work/count?status=Done&category=staff"
+          "https://managementba-yq52.onrender.com/api/work/count?status=Done&category=staff"
         );
         const staffDone = await res1.json();
 
         const res2 = await fetch(
-          "http://localhost:3050/api/adminwork/count?status=Done"
+          "https://managementba-yq52.onrender.com/api/adminwork/count?status=Done"
         );
         const adminDone = await res2.json();
 
@@ -118,19 +118,19 @@ function Dashboard() {
     const fetchLineData = async () => {
       try {
         const resM = await fetch(
-          "http://localhost:3050/api/stats/monthly-completed"
+          "https://managementba-yq52.onrender.com/api/stats/monthly-completed"
         );
         const dataM = await resM.json();
         setMonthlyData(dataM || []);
 
         const resD = await fetch(
-          "http://localhost:3050/api/stats/daily-completed"
+          "https://managementba-yq52.onrender.com/api/stats/daily-completed"
         );
         const dataD = await resD.json();
         setDailyData(dataD || []);
 
         const resY = await fetch(
-          "http://localhost:3050/api/stats/yearly-completed"
+          "https://managementba-yq52.onrender.com/api/stats/yearly-completed"
         );
         const dataY = await resY.json();
         setYearlyData(dataY || []);
