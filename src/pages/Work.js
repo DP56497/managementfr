@@ -16,7 +16,7 @@ function Work() {
         const email = localStorage.getItem("email")?.toLowerCase().trim();
         const name = localStorage.getItem("name");
 
-        const res = await fetch("http://localhost:3050/api/assigned-work");
+        const res = await fetch("https://managementba-yq52.onrender.com/api/assigned-work");
         const data = await res.json();
 
         if (category === "staff") {
@@ -51,7 +51,7 @@ function Work() {
     formData.append("completedPdf", file);
 
     try {
-      const res = await fetch(`http://localhost:3050/api/assigned-work/${itemId}/complete-pdf`, {
+      const res = await fetch(`https://managementba-yq52.onrender.com/api/assigned-work/${itemId}/complete-pdf`, {
         method: "POST",
         body: formData,
       });
@@ -127,7 +127,7 @@ function Work() {
                     )}
                     <td style={tdStyle}>{item.description}</td>
                     <td style={tdStyle}>
-                      <a href={`http://localhost:3050${item.pdfPath}`} target="_blank" rel="noopener noreferrer" style={linkStyle}>
+                      <a href={`https://managementba-yq52.onrender.com${item.pdfPath}`} target="_blank" rel="noopener noreferrer" style={linkStyle}>
                         View PDF
                       </a>
                     </td>
@@ -153,7 +153,7 @@ function Work() {
                         </td>
                         <td style={tdStyle}>
                           {item.status === "Done" && item.pdfPath ? (
-                            <a href={`http://localhost:3050${item.pdfPath}`} target="_blank" rel="noopener noreferrer" style={linkStyle}>
+                            <a href={`https://managementba-yq52.onrender.com${item.pdfPath}`} target="_blank" rel="noopener noreferrer" style={linkStyle}>
                               View Completed PDF
                             </a>
                           ) : (
@@ -196,14 +196,14 @@ function Work() {
     updatedList[index].status = newStatus;
     setWorkList(updatedList);
 
-    fetch(`http://localhost:3050/api/assigned-work/${id}`, {
+    fetch(`https://managementba-yq52.onrender.com/api/assigned-work/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: newStatus })
     })
     .then(res => res.json())
     .then(() => {
-      fetch("http://localhost:3050/api/stats")
+      fetch("https://managementba-yq52.onrender.com/api/stats")
         .then(res => res.json())
         .then(data => {
           localStorage.setItem("dashboardStats", JSON.stringify(data));
